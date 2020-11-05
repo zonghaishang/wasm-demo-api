@@ -1,7 +1,20 @@
 package main
 
-import "github.com/zonghaishang/wasm-demo-host/pkg/http"
+import (
+	"fmt"
+	"unsafe"
+)
+
+//export sum
+func sum(context unsafe.Pointer, x int32, y int32) int32 {
+	return x + y
+}
+
+//export sum2
+func sum2(x int32, y int32) int32 {
+	return x + y
+}
 
 func main() {
-	http.Server(":8080")
+	fmt.Println("wasm-demo-api plugin.")
 }
